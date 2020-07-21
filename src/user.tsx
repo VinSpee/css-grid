@@ -53,6 +53,11 @@ export default function User({
   const { ref, getStyleForBreakpoint: bp } = useContainerQuery({
     breakpoints: [202, 232, 272],
   });
+  const randomUrl = React.useMemo(
+    () => `${photoUrl}?lock=${Math.random().toFixed(2).slice(2, 5)}`,
+    [photoUrl],
+  );
+  console.log({ randomUrl });
   return (
     <View
       // @ts-ignore
@@ -70,14 +75,15 @@ export default function User({
         sx={{
           minWidth: 6,
           maxWidth: bp([12, 17, 21, 31]),
+          height: '100%',
           marginRight: bp([5, null, 6]),
           marginBottom: bp([5, 0]),
           flexBasis: '33.3%',
           borderRadius: '50%',
           width: '100%',
         }}
+        src={randomUrl}
         as="img"
-        src={photoUrl}
       />
       <View>
         <View sx={{ marginBottom: bp([2, 3]) }}>

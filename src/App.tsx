@@ -1,7 +1,6 @@
 /** @jsx jsx */
 
 // @ts-ignore
-import * as React from 'react';
 import { jsx, sx, View } from '@tedconf/monterey';
 import Text from './text';
 import TalkUnit from './talk-unit';
@@ -26,11 +25,6 @@ const App = () => {
   });
   const { getStyleForBreakpoint: bp } = useWindowSize();
 
-  console.log({
-    orientation: bp(['horizontal', null, 'vertical']),
-    visibleSlides: trendingBp([1.2, 1.5, 2.1, 3]),
-  });
-
   return (
     <View
       sx={{
@@ -38,6 +32,7 @@ const App = () => {
         backgroundColor: 'white',
         color: 'black',
         width: '100%',
+        overflowX: 'hidden',
       }}
     >
       <View
@@ -45,9 +40,17 @@ const App = () => {
           display: ['flex', null, null, 'grid'],
           width: '100%',
           gridGap: 15,
+          maxWidth: 300,
+          marginX: 'auto',
           // @ts-ignore
-          gridTemplateColumns: (theme) =>
-            `minmax(60%, 2fr) minmax(${theme.sizes[57]}, ${theme.sizes[83]})`,
+          gridTemplateColumns: [
+            'minmax(60%, 3fr) 3fr 3fr',
+            null,
+            null,
+            null,
+            'minmax(50%, 3fr) 3fr 3fr',
+          ],
+          gridTemplateRows: 'auto auto auto auto',
           paddingX: 4,
           paddingY: 15,
         }}
@@ -89,7 +92,7 @@ const App = () => {
             <User
               name="Kristin Watson"
               byline="Role at Organization"
-              photoUrl="https://loremflickr.com/250/250/dog?lock=8"
+              photoUrl="https://loremflickr.com/250/250/dog"
             />
           </View>
           <View
@@ -110,48 +113,70 @@ const App = () => {
           </View>
         </View>
         <View
+          sx={{
+            width: '100%',
+            alignItems: 'stretch',
+            gridRow: [4, null, null, null, 1],
+            gridColumn: [1, null, null, null, 3],
+          }}
+        >
+          <Underlined>
+            <Text variant="3b">Featured people</Text>
+          </Underlined>
+        </View>
+        <View
           id="featuredPeople"
           sx={{
             width: '100%',
             alignItems: 'stretch',
-            gridRow: 4,
-            gridColumn: 1,
+            // @ts-ignore
+            gridColumnStart: [null, null, null, null, 3],
+            gridRow: [5, null, null, null, '2 / -1'],
+            maxWidth: 80,
           }}
         >
           <View
             sx={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gridRowGap: 8,
-              gridGap: 10,
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              // @ts-ignore
+              '& > *': {
+                marginBottom: 15,
+                marginX: [null, 2, null, null, 0],
+                width: '100%',
+              },
             }}
           >
             <View>
               <User
                 name="Kristin Watson"
                 byline="Role at Organization"
-                photoUrl="https://loremflickr.com/250/250/dog?lock=8"
+                photoUrl="https://loremflickr.com/250/250/dog"
+                onFollow={() => {}}
               />
             </View>
             <View>
               <User
                 name="Kristin Watson"
                 byline="Role at Organization"
-                photoUrl="https://loremflickr.com/250/250/dog?lock=8"
+                photoUrl="https://loremflickr.com/250/250/dog"
+                onFollow={() => {}}
               />
             </View>
             <View>
               <User
                 name="Kristin Watson"
                 byline="Role at Organization"
-                photoUrl="https://loremflickr.com/250/250/dog?lock=8"
+                photoUrl="https://loremflickr.com/250/250/dog"
+                onFollow={() => {}}
               />
             </View>
             <View>
               <User
                 name="Kristin Watson"
                 byline="Role at Organization"
-                photoUrl="https://loremflickr.com/250/250/dog?lock=8"
+                photoUrl="https://loremflickr.com/250/250/dog"
+                onFollow={() => {}}
               />
             </View>
           </View>
@@ -159,9 +184,9 @@ const App = () => {
         <View
           sx={{
             // @ts-ignore
-            gridColumnStart: 2,
-            alignSelf: 'flex-end',
-            gridRow: 1,
+            gridColumn: ['2 / -1', null, null, null, '2 / -2'],
+            alignSelf: [null, null, null, 'flex-end'],
+            gridRow: 'auto',
           }}
         >
           <Underlined>
@@ -176,9 +201,15 @@ const App = () => {
             // @ts-ignore
             gridColumnStart: 2,
             gridRow: '2 / -1',
+            gridColumn: ['2 / -1', null, null, null, '2 / -2'],
           }}
         >
-          <View sx={{ display: 'block', marginX: ['release', null, null, 0] }}>
+          <View
+            sx={{
+              display: 'block',
+              marginX: ['release', null, null, 0],
+            }}
+          >
             <CarouselProvider
               isIntrinsicHeight={bp([true, null, false])}
               orientation={bp(['horizontal', null, 'vertical'])}
@@ -186,7 +217,13 @@ const App = () => {
               visibleSlides={bp([trendingBp([1.2, 1.5, 2.1, 3]), null, 3])}
               naturalSlideHeight={340}
               naturalSlideWidth={320}
+              touchEnabled={bp([true, null, false])}
+              dragEnabled={bp([true, null, false])}
               css={sx({
+                '& .carousel__slider-tray-wrap--vertical': {
+                  height: '100% !important',
+                  paddingBottom: '0 !important',
+                },
                 '& .carousel__slider--vertical .carousel__slide': {
                   height: 'auto',
                   paddingBottom: '0 !important',

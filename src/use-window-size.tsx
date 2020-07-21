@@ -14,11 +14,14 @@ const styleForBp = (current: string | number) => (styles: any): any => {
 type BreakpointsType = number[];
 
 const BREAKPOINTS = theme.breakpoints as BreakpointsType;
-export function WindowSizeManager(props: {
+export function WindowSizeManager({
+  breakpoints = BREAKPOINTS,
+  ...props
+}: {
   children: React.ReactNode;
   breakpoints: BreakpointsType;
 }): React.ReactElement {
-  return <ZoneManager {...props} />;
+  return <ZoneManager breakpoints={breakpoints} {...props} />;
 }
 
 export default () => {
