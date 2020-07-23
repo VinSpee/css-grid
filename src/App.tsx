@@ -39,7 +39,7 @@ const App = () => {
         sx={{
           display: ['flex', null, null, 'grid'],
           width: '100%',
-          gridGap: 15,
+          gridGap: [6, 12],
           maxWidth: 300,
           marginX: 'auto',
           // @ts-ignore
@@ -76,7 +76,7 @@ const App = () => {
             gridColumn: 1,
           }}
         >
-          <View sx={{ marginBottom: 8 }}>
+          <View sx={{ marginBottom: [2, null, null, 0] }}>
             <TalkUnit
               stacked
               title="How I made friends with reality"
@@ -92,6 +92,7 @@ const App = () => {
             <User
               name="Kristin Watson"
               byline="Role at Organization"
+              onFollow={() => {}}
               photoUrl="https://loremflickr.com/250/250/dog"
             />
           </View>
@@ -100,7 +101,7 @@ const App = () => {
               width: '100%',
               color: 'gray.0',
               marginTop: 5,
-              marginBottom: 8,
+              marginBottom: 16,
               paddingX: 3,
             }}
           >
@@ -132,7 +133,7 @@ const App = () => {
             // @ts-ignore
             gridColumnStart: [null, null, null, null, 3],
             gridRow: [5, null, null, null, '2 / -1'],
-            maxWidth: 80,
+            maxWidth: [null, null, null, null, 80],
           }}
         >
           <View
@@ -142,14 +143,23 @@ const App = () => {
               // @ts-ignore
               '& > *': {
                 marginBottom: 15,
-                marginX: [null, 2, null, null, 0],
-                width: '100%',
+                paddingX: [4, 2, null, null, 0],
+                '&:nth-of-type(even)': {
+                  paddingLeft: 0,
+                },
+                width: '50%',
+                '& > *': {
+                  maxWidth: 43,
+                },
+                '& * img': {
+                  maxWidth: '68px',
+                },
               },
             }}
           >
             <View>
               <User
-                name="Kristin Watson"
+                name="Kristin Watsonfdklasnfewnqleqnkflewnqklfewqfnkqfew"
                 byline="Role at Organization"
                 photoUrl="https://loremflickr.com/250/250/dog"
                 onFollow={() => {}}
@@ -157,7 +167,7 @@ const App = () => {
             </View>
             <View>
               <User
-                name="Kristin Watson"
+                name="Kristin Watsonfdklasnfewnqleqnkflewnqklfewqfnkqfew"
                 byline="Role at Organization"
                 photoUrl="https://loremflickr.com/250/250/dog"
                 onFollow={() => {}}
@@ -214,7 +224,7 @@ const App = () => {
               isIntrinsicHeight={bp([true, null, false])}
               orientation={bp(['horizontal', null, 'vertical'])}
               totalSlides={3}
-              visibleSlides={bp([trendingBp([1.2, 1.5, 2.1, 3]), null, 3])}
+              visibleSlides={bp([trendingBp([1.2, 2.1, 3, 3]), null, 3])}
               naturalSlideHeight={340}
               naturalSlideWidth={320}
               touchEnabled={bp([true, null, false])}
@@ -232,7 +242,9 @@ const App = () => {
             >
               <Slider>
                 <Slide index={0}>
-                  <View sx={{ marginBottom: 10, paddingX: '10px' }}>
+                  <View
+                    sx={{ marginBottom: 10, paddingX: ['10px', null, null, 0] }}
+                  >
                     <TalkUnit
                       stacked
                       src="https://loremflickr.com/720/405/dog?lock=6"
@@ -241,7 +253,9 @@ const App = () => {
                   </View>
                 </Slide>
                 <Slide index={1}>
-                  <View sx={{ marginBottom: 10, paddingX: '10px' }}>
+                  <View
+                    sx={{ marginBottom: 10, paddingX: ['10px', null, null, 0] }}
+                  >
                     <TalkUnit
                       stacked
                       title={`"Everything happens for a reason" — and other lies I've loved`}
@@ -250,7 +264,9 @@ const App = () => {
                   </View>
                 </Slide>
                 <Slide index={2}>
-                  <View sx={{ marginBottom: 10, paddingX: '10px' }}>
+                  <View
+                    sx={{ marginBottom: 10, paddingX: ['10px', null, null, 0] }}
+                  >
                     <TalkUnit
                       stacked
                       title={`"Everything happens for a reason" — and other lies I've loved`}

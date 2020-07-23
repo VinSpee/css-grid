@@ -48,7 +48,7 @@ export default function TalkUnit({
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           flexDirection: 'row',
-          marginTop: bp([null, 1, 0, 5]),
+          marginTop: bp([null, 1, 3, 5]),
           height: '100%',
         }}
       >
@@ -60,7 +60,7 @@ export default function TalkUnit({
           }}
         >
           <View>
-            <Text variant={bp(['1b', '3b', '2b', '5b'])}>{title}</Text>
+            <Text variant={bp(['1b', '4b', '5b', null])}>{title}</Text>
           </View>
           <View
             sx={{

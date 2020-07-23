@@ -69,6 +69,8 @@ export default function User({
         alignItems: 'center',
         position: 'relative',
         flexWrap: 'wrap',
+        // @ts-ignore
+        wordBreak: 'break-all',
       }}
     >
       <View
@@ -85,9 +87,28 @@ export default function User({
         src={randomUrl}
         as="img"
       />
+      <View sx={{ width: 'auto' }}>
+        {bp([
+          <View
+            sx={{ flexDirection: 'row', width: '100%', color: 'TEDRed.0' }}
+            as="button"
+          >
+            <View sx={{ width: 3, marginTop: '-1px', marginRight: 2 }}>
+              <FollowIcon />
+            </View>
+            <Text variant="-1m">Follow</Text>
+          </View>,
+          null,
+        ])}
+      </View>
       <View>
         <View sx={{ marginBottom: bp([2, 3]) }}>
-          <Text variant={bp(['1b', null, null, '2b'])}>{name}</Text>
+          <Text
+            // @ts-ignore
+            variant={bp(['1b', null, null, '2b'])}
+          >
+            {name}
+          </Text>
         </View>
         <View>
           <Text color="gray.0" variant={bp(['-1r', null, null, '1r'])}>
@@ -96,19 +117,7 @@ export default function User({
         </View>
         {onFollow && (
           <View sx={{ marginTop: bp([3, null, 5, null, 6]) }}>
-            {bp([
-              <View
-                sx={{ flexDirection: 'row', width: '100%', color: 'TEDRed.0' }}
-                as="button"
-              >
-                <View sx={{ width: 3, marginTop: '-1px', marginRight: 2 }}>
-                  <FollowIcon />
-                </View>
-                <Text variant="-1m">Follow</Text>
-              </View>,
-              null,
-              <Button icon={<FollowIcon />}>Follow</Button>,
-            ])}
+            {bp([null, null, <Button icon={<FollowIcon />}>Follow</Button>])}
           </View>
         )}
         {onUnfollow && (
