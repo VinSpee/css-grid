@@ -21,5 +21,11 @@ export default {
     '7': '60px',
     root: '14px',
   },
-  borderRadius: [0, '2px', '8px'],
+  borderRadius: [
+    0,
+    '2px',
+    oldTheme.space[1],
+    oldTheme.space[2],
+    oldTheme.space[4],
+  ],
 };

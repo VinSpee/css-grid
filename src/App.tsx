@@ -101,7 +101,6 @@ const App = () => {
               width: '100%',
               color: 'gray.0',
               marginTop: 5,
-              marginBottom: 16,
               paddingX: 3,
             }}
           >
@@ -119,6 +118,8 @@ const App = () => {
             alignItems: 'stretch',
             gridRow: [4, null, null, null, 1],
             gridColumn: [1, null, null, null, 3],
+            marginTop: [6, null, 0],
+            alignSelf: 'flex-end',
           }}
         >
           <Underlined>
@@ -140,9 +141,10 @@ const App = () => {
             sx={{
               flexDirection: 'row',
               flexWrap: 'wrap',
+              marginBottom: [-4, null, 0],
               // @ts-ignore
               '& > *': {
-                marginBottom: 15,
+                marginBottom: 4,
                 paddingX: [4, 2, null, null, 0],
                 '&:nth-of-type(even)': {
                   paddingLeft: 0,
@@ -195,8 +197,9 @@ const App = () => {
           sx={{
             // @ts-ignore
             gridColumn: ['2 / -1', null, null, null, '2 / -2'],
-            alignSelf: [null, null, null, 'flex-end'],
+            alignSelf: 'flex-end',
             gridRow: 'auto',
+            marginTop: [6, null, 0],
           }}
         >
           <Underlined>

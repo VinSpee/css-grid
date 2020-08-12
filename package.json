@@ -10,11 +10,13 @@
   "main": "src/index.tsx",
   "dependencies": {
     "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
     "@styled-system/css": "5.1.5",
     "@styled-system/should-forward-prop": "5.1.5",
     "@styled-system/variant": "5.1.5",
     "@tedconf/monterey": "1.1.0-rc.0",
     "@types/styled-system": "5.1.9",
+    "capsize": "1.1.0",
     "csstype": "2.6.11",
     "emotion-theming": "10.0.27",
     "pure-react-carousel": "1.27.1",

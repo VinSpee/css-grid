@@ -37,6 +37,8 @@ const UnfollowIcon = () => (
 
 type UserProps = {
   photoUrl?: string;
+  inline?: boolean;
+  stacked?: boolean;
   name?: string;
   byline?: string;
   onFollow?: () => any;
@@ -46,6 +48,8 @@ type UserProps = {
 export default function User({
   photoUrl,
   name,
+  stacked,
+  inline,
   byline,
   onFollow,
   onUnfollow,
@@ -57,7 +61,6 @@ export default function User({
     () => `${photoUrl}?lock=${Math.random().toFixed(2).slice(2, 5)}`,
     [photoUrl],
   );
-  console.log({ randomUrl });
   return (
     <View
       // @ts-ignore
@@ -71,50 +74,57 @@ export default function User({
         flexWrap: 'wrap',
         // @ts-ignore
         wordBreak: 'break-all',
+        ...(inline && { width: 'unset', maxWidth: '100%' }),
       }}
     >
       <View
         sx={{
           minWidth: 6,
-          maxWidth: bp([12, 17, 21, 31]),
           height: '100%',
           marginRight: bp([5, null, 6]),
           marginBottom: bp([5, 0]),
           flexBasis: '33.3%',
           borderRadius: '50%',
           width: '100%',
+          ...(inline && {
+            width: '1.5em',
+            height: '1.5em',
+            flexBasis: 'auto',
+            minWidth: 'unset',
+            marginBottom: 0,
+            marginRight: 1,
+          }),
         }}
         src={randomUrl}
         as="img"
       />
-      <View sx={{ width: 'auto' }}>
-        {bp([
-          <View
-            sx={{ flexDirection: 'row', width: '100%', color: 'TEDRed.0' }}
-            as="button"
-          >
-            <View sx={{ width: 3, marginTop: '-1px', marginRight: 2 }}>
-              <FollowIcon />
-            </View>
-            <Text variant="-1m">Follow</Text>
-          </View>,
-          null,
-        ])}
-      </View>
-      <View>
-        <View sx={{ marginBottom: bp([2, 3]) }}>
+      <View sx={inline ? { flexDirection: 'row', alignItems: 'center' } : null}>
+        <View
+          sx={{
+            marginBottom: bp([2, 3]),
+            ...(inline && {
+              marginBottom: 0,
+            }),
+          }}
+        >
           <Text
             // @ts-ignore
-            variant={bp(['1b', null, null, '2b'])}
+            variant={inline ? '1b' : bp(['1b', null, null, '2b'])}
           >
             {name}
+            {inline && Boolean(byline) && <>,{'\u00A0'}</>}
           </Text>
         </View>
-        <View>
-          <Text color="gray.0" variant={bp(['-1r', null, null, '1r'])}>
-            {byline}
-          </Text>
-        </View>
+        {byline && (
+          <View sx={{ marginLeft: inline && 1 }}>
+            <Text
+              color="gray.0"
+              variant={inline ? '1r' : bp(['-1r', null, null, '1r'])}
+            >
+              {byline}
+            </Text>
+          </View>
+        )}
         {onFollow && (
           <View sx={{ marginTop: bp([3, null, 5, null, 6]) }}>
             {bp([null, null, <Button icon={<FollowIcon />}>Follow</Button>])}
