@@ -40,6 +40,7 @@ const App = () => {
           display: ['flex', null, null, 'grid'],
           width: '100%',
           gridGap: [6, 12],
+          gridRowGap: [6],
           maxWidth: 300,
           marginX: 'auto',
           // @ts-ignore
@@ -51,7 +52,7 @@ const App = () => {
             'minmax(50%, 3fr) 3fr 3fr',
           ],
           gridTemplateRows: 'auto auto auto auto',
-          paddingX: 4,
+          paddingX: [4, null, 6],
           paddingY: 15,
         }}
       >
@@ -88,11 +89,14 @@ const App = () => {
           sx={{ gridRow: 3, gridColumn: 1, alignItems: 'stretch' }}
           id="newestTalks"
         >
-          <View sx={{ width: '100%', maxWidth: 51 }}>
+          <View
+            sx={{ width: '100%', maxWidth: bp(['100%', null, null, null, 51]) }}
+          >
             <User
               name="Kristin Watson"
               byline="Role at Organization"
               onFollow={() => {}}
+              inline={bp([true, null, null, null, false])}
               photoUrl="https://loremflickr.com/250/250/dog"
             />
           </View>
@@ -145,16 +149,13 @@ const App = () => {
               // @ts-ignore
               '& > *': {
                 marginBottom: 4,
-                paddingX: [4, 2, null, null, 0],
+                paddingX: [4, null, null, null, 0],
                 '&:nth-of-type(even)': {
                   paddingLeft: 0,
                 },
-                width: '50%',
+                width: '25%',
                 '& > *': {
-                  maxWidth: 43,
-                },
-                '& * img': {
-                  maxWidth: '68px',
+                  // maxWidth: 35,
                 },
               },
             }}
@@ -165,6 +166,7 @@ const App = () => {
                 byline="Role at Organization"
                 photoUrl="https://loremflickr.com/250/250/dog"
                 onFollow={() => {}}
+                stacked
               />
             </View>
             <View>
@@ -173,6 +175,7 @@ const App = () => {
                 byline="Role at Organization"
                 photoUrl="https://loremflickr.com/250/250/dog"
                 onFollow={() => {}}
+                stacked
               />
             </View>
             <View>
@@ -181,6 +184,7 @@ const App = () => {
                 byline="Role at Organization"
                 photoUrl="https://loremflickr.com/250/250/dog"
                 onFollow={() => {}}
+                stacked
               />
             </View>
             <View>
@@ -189,6 +193,7 @@ const App = () => {
                 byline="Role at Organization"
                 photoUrl="https://loremflickr.com/250/250/dog"
                 onFollow={() => {}}
+                stacked
               />
             </View>
           </View>
@@ -197,13 +202,13 @@ const App = () => {
           sx={{
             // @ts-ignore
             gridColumn: ['2 / -1', null, null, null, '2 / -2'],
-            alignSelf: 'flex-end',
+            alignSelf: [null, null, null, 'flex-end'],
             gridRow: 'auto',
             marginTop: [6, null, 0],
           }}
         >
           <Underlined>
-            <Text variant={['2b', '3b']}>Trending</Text>
+            <Text variant={['3b']}>Trending</Text>
           </Underlined>
         </View>
         <View

@@ -94,6 +94,9 @@ export default function User({
             marginBottom: 0,
             marginRight: 1,
           }),
+          ...(stacked && {
+            flexBasis: 'auto',
+          }),
         }}
         src={randomUrl}
         as="img"
@@ -125,9 +128,9 @@ export default function User({
             </Text>
           </View>
         )}
-        {onFollow && (
+        {onFollow && !inline && (
           <View sx={{ marginTop: bp([3, null, 5, null, 6]) }}>
-            {bp([null, null, <Button icon={<FollowIcon />}>Follow</Button>])}
+            <Button icon={<FollowIcon />}>Follow</Button>
           </View>
         )}
         {onUnfollow && (

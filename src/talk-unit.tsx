@@ -38,8 +38,6 @@ export default function TalkUnit({
           width: '100%',
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
-          marginBottom: 2,
-          marginRight: 4,
         }}
       />
       <View
@@ -48,7 +46,7 @@ export default function TalkUnit({
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           flexDirection: 'row',
-          marginTop: bp([null, 1, 3, 5]),
+          marginTop: bp([4, null, 8]),
           height: '100%',
         }}
       >
@@ -60,13 +58,13 @@ export default function TalkUnit({
           }}
         >
           <View>
-            <Text variant={bp(['1b', '4b', '5b', null])}>{title}</Text>
+            <Text variant={bp(['2b', '4b', '5b', null])}>{title}</Text>
           </View>
           <View
             sx={{
               // @ts-ignore
               visibility: bp(['hidden', 'visible']),
-              marginTop: bp([null, 5, 4, 5]),
+              marginTop: bp([null, 4]),
             }}
           >
             <Text color="gray.1" variant="-1u">

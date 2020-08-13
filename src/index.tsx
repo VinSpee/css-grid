@@ -13,7 +13,7 @@ const rootElement = document.getElementById('root');
 render(
   <ThemeProvider theme={theme}>
     <Reset />
-    <WindowSizeManager breakpoints={[600, 768, 1440]}>
+    <WindowSizeManager breakpoints={[600, 768, 1000, 1440]}>
       {window.location.search === '?people' && <PeopleDemo />}
       {!window.location.search && <App />}
     </WindowSizeManager>
